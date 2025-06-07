@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BRO-FEST REUNION</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('BroFestBackground.png');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .overlay {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            margin-top: 10vh;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        #countdown {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="https://cdn.pixabay.com/audio/2023/03/16/audio_7b9d240f26.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="overlay">
+        <h1>BRO-FEST REUNION</h1>
+        <div id="countdown"></div>
+    </div>
+    <script>
+        const targetDate = new Date("2025-06-19T00:00:00").getTime();
+        const countdownElement = document.getElementById('countdown');
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                window.location.href = "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+        }, 1000);
+    </script>
+</body>
+</html>
